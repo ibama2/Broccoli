@@ -1,29 +1,25 @@
-# Next.js + Jest
+# Project Functionality
+This project Broccoli creates a simple yet clean homepage that allow users to enter their [name] and [email] to receive email invitations.
 
-This example shows how to configure Jest to work with Next.js.
 
-This includes Next.js' built-in support for Global CSS, CSS Modules and TypeScript.
+# To run this project
+```bash
+npm install
+npm run dev
+```
 
-## How to Use
+# Run Jest Tests
+```bash
+npm run test
+```
 
-Quickly get started using [Create Next App](https://github.com/vercel/next.js/tree/canary/packages/create-next-app#readme)!
-
-In your terminal, run the following command:
-
+# Framework: Next.js + Jest
 ```bash
 npx create-next-app --example with-jest with-jest-app
 ```
 
-```bash
-yarn create next-app --example with-jest with-jest-app
-```
+This includes Next.js' built-in support for Global CSS, CSS Modules and TypeScript.
 
-```bash
-pnpm create next-app --example with-jest with-jest-app
-```
+The Next.js Compiler, written in Rust using SWC, allows Next.js to transform and minify your JavaScript code for production.
 
-## Run Jest Tests
-
-```bash
-npm test
-```
+Compilation using the Next.js Compiler is 17x faster than Babel and enabled by default since Next.js version 12.

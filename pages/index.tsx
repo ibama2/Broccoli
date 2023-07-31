@@ -116,7 +116,7 @@ export default function Home() {
 
   const ModalContent = () => success ? (
     <div className={styles.flexColumn}>
-      <Typography id="modal-modal-title" variant="h6" component="h2">
+      <Typography className={styles.italic} id="modal-modal-title" variant="h6" component="h2">
         All done!
       </Typography>
       <div className={styles.shortLine}></div>
@@ -125,7 +125,7 @@ export default function Home() {
     </div>
   ) : (
     <div className={styles.flexColumn}>
-      <Typography id="modal-modal-title" variant="h6" component="h2">
+      <Typography className={styles.italic} id="modal-modal-title" variant="h6" component="h2">
         Request an invite
       </Typography>
       <div className={styles.shortLine}></div>

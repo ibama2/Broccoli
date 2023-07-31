@@ -33,6 +33,7 @@
 
 .flexColumn > * + * {
   padding: 1rem;
+  text-align: center;
 }
 
 .shortLine {
@@ -40,6 +41,10 @@
   border-bottom: 2px solid black;
   margin: auto;
   transform: translateY(-0.5rem);
+}
+
+.italic {
+  font-style: italic;
 }
 
 @media (max-width: 600px) {
