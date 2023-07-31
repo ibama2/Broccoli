@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import React, { useState } from 'react';
-import { Modal, Box, FormControl, InputLabel, Input, FormHelperText } from '@mui/material';
-import Typography from '@mui/material/Typography';
+import { Modal, Box, FormControl, InputLabel, Input, FormHelperText, Typography } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import axios from 'axios';
 

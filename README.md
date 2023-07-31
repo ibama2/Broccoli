@@ -7,6 +7,11 @@ npm install
 npm run dev
 ```
 
+# To build this project
+```bash
+npm run build
+```
+
 # Run Jest Tests
 ```bash
 npm run test
