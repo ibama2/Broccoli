@@ -63,7 +63,7 @@ export default function Home() {
   // input handlers
   const handleFullNameChange = (e: any) => {
     setFullName(e.target.value);
-    setErrorFullName(e.target.value.length < 4);
+    setErrorFullName(e.target.value.length < 3);
   }
 
   const handleEmailChange = (e: any) => {
@@ -80,7 +80,7 @@ export default function Home() {
   // request
   const handleSend = () => {
     // validation
-    if (fullName.length < 4) {
+    if (fullName.length < 3) {
       setErrorFullName(true);
       return;
     }
@@ -99,7 +99,7 @@ export default function Home() {
       name: fullName,
       email
     })
-      .then(({ status, data = {} }) => {
+      .then(({ status }) => {
         setIsLoading(false);
         if (status == 200) {
           setSuccess(true);
@@ -120,8 +120,8 @@ export default function Home() {
         All done!
       </Typography>
       <div className={styles.shortLine}></div>
-      <p>You will be one of the first to experience Broccoli & Co. when we launch.</p>
-      <button className={styles.button} onClick={handleClose}>Ok</button>
+      <p aria-label="ok-message">You will be one of the first to experience Broccoli & Co. when we launch.</p>
+      <button aria-label="ok-button" className={styles.button} onClick={handleClose}>OK</button>
     </div>
   ) : (
     <div className={styles.flexColumn}>
@@ -133,35 +133,35 @@ export default function Home() {
         <InputLabel htmlFor="full-name">Full Name</InputLabel>
         <Input
           id="full-name"
-          aria-describedby="full-name-error-text"
-          onBlur={handleFullNameChange}
+          aria-label="full-name-input"
+          onChange={handleFullNameChange}
         />
-        {errorFullName ? <FormHelperText id="full-name-error-text">At least 3 characters</FormHelperText> : null}
+        {errorFullName ? <FormHelperText aria-label="full-name-error-text">At least 3 characters</FormHelperText> : null}
       </FormControl>
 
       <FormControl error={errorEmail} variant="standard">
         <InputLabel htmlFor="email">Email</InputLabel>
         <Input
           id="email"
-          aria-describedby="email-error-text"
-          onBlur={handleEmailChange}
+          aria-label="email-input"
+          onChange={handleEmailChange}
         />
-        {errorEmail ? <FormHelperText id="email-error-text">Invalid Email Format</FormHelperText> : null}
+        {errorEmail ? <FormHelperText aria-label="email-error-text">Invalid Email Format</FormHelperText> : null}
       </FormControl>
 
       <FormControl error={errorConfirmEmail} variant="standard">
         <InputLabel htmlFor="confirm-email">Confirm Email</InputLabel>
         <Input
           id="confirm-email"
-          aria-describedby="confirm-email-error-text"
-          onBlur={handleConfirmEmail}
+          aria-label="confirm-email-input"
+          onChange={handleConfirmEmail}
         />
-        {errorConfirmEmail ? <FormHelperText id="confirm-email-error-text">Email doesn't match</FormHelperText> : null}
+        {errorConfirmEmail ? <FormHelperText aria-label="confirm-email-error-text">Email doesn't match</FormHelperText> : null}
       </FormControl>
 
-      <button disabled={isLoading} className={styles.button} onClick={handleSend}>{isLoading ? 'Sending, please wait..' : 'Send'}</button>
+      <button aria-label="send-button" disabled={isLoading} className={styles.button} onClick={handleSend}>{isLoading ? 'Sending, please wait..' : 'Send'}</button>
 
-      {errorStatusText.length > 0 ? errorStatusText : null}
+      {errorStatusText.length > 0 ? <div aria-label='error-status-text'>{errorStatusText}</div> : null}
     </div>
   )
 
@@ -172,7 +172,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header>
+      <header aria-label="header">
         Broccoli & Co.
       </header>
 
@@ -188,7 +188,7 @@ export default function Home() {
           Be the first to know when we launch.
         </p>
 
-        <button className={styles.button} onClick={handleOpen}>Request an invite</button>
+        <button aria-label='invite button' className={styles.button} onClick={handleOpen}>Request an invite</button>
       </main>
 
       <footer>
@@ -197,15 +197,15 @@ export default function Home() {
       </footer>
 
       <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-        >
-            <Box sx={style}>
-                {ModalContent()}
-            </Box>
-        </Modal>
+        open={open}
+        onClose={handleClose}
+        aria-label="invite-modal-title"
+        aria-describedby="invite-modal-description"
+      >
+        <Box sx={style}>
+          {ModalContent()}
+        </Box>
+      </Modal>
     </div>
   )
 }
