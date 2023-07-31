@@ -1,7 +1,6 @@
 # Project Functionality
 This project Broccoli creates a simple yet clean homepage that allow users to enter their [name] and [email] to receive email invitations.
 
-
 # To run this project
 ```bash
 npm install
@@ -12,6 +11,11 @@ npm run dev
 ```bash
 npm run test
 ```
+
+# Environment
+node: v16.14.0
+npm: 8.3.1
+Nextjs: 13.4.12 (requires Node.js 16.8 or later.)
 
 # Framework: Next.js + Jest
 ```bash
