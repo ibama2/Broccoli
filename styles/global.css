@@ -10,6 +10,19 @@ body {
   box-sizing: border-box;
 }
 
+header {
+  width: 100%;
+  height: 80px;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 80px;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
 main {
   padding: 5rem 0;
   flex: 1;
@@ -21,33 +34,27 @@ main {
 
 footer {
   width: 100%;
-  height: 100px;
+  height: 80px;
   border-top: 1px solid #eaeaea;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-footer img {
-  margin-left: 0.5rem;
+.MuiTypography-root {
+  text-align: center;
 }
 
-footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+@media (max-width: 600px) {
+  header {
+    justify-content: center;
+    padding-left: 0;
+  }
 
-code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
+  .MuiBox-root {
+    width: 280px;
+    max-width: 96%;
+  }
 }
