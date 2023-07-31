@@ -3,8 +3,11 @@ import Home from '@/pages/index';
 
 describe('Home', () => {
 
-  it('renders a header: Broccoli & Co.', () => {
+  beforeEach(() => {
     render(<Home />)
+  })
+
+  it('renders a header: Broccoli & Co.', () => {
     const header = screen.queryByLabelText('header')
     let heading = header?.textContent;
 
@@ -12,7 +15,6 @@ describe('Home', () => {
   })
 
   it('renders an invite button', () => {
-    render(<Home />)
     const button = screen.queryByLabelText('invite button');
     let name = button?.textContent;
 
@@ -20,7 +22,6 @@ describe('Home', () => {
   })
 
   it('render the invite modal when clicking invite button', () => {
-    render(<Home />)
     expect(screen.queryByLabelText('invite-modal-title')).toBeNull();
 
     const button = screen.queryByLabelText('invite button');
@@ -32,7 +33,6 @@ describe('Home', () => {
 
 
   it('render 3 input fields and 1 send button: full name, email, confirm email in the invite modal', () => {
-    render(<Home />)
     expect(screen.queryByLabelText('full-name-input')).toBeNull();
     expect(screen.queryByLabelText('email-input')).toBeNull();
     expect(screen.queryByLabelText('confirm-email-input')).toBeNull();
@@ -49,7 +49,6 @@ describe('Home', () => {
   })
 
   it('show validation message when full name is less than 3 characters and hide it otherwise', async () => {
-    render(<Home />)
     const button = screen.queryByLabelText('invite button');
 
     if (button) {
@@ -72,7 +71,6 @@ describe('Home', () => {
   })
 
   it('show validation message when email is invalid and hide it otherwise', async () => {
-    render(<Home />)
     const button = screen.queryByLabelText('invite button');
 
     if (button) {
@@ -93,7 +91,6 @@ describe('Home', () => {
   })
 
   it("show validation message when confirm email doesn't match and hide it otherwise", async () => {
-    render(<Home />)
     const button = screen.queryByLabelText('invite button');
 
     if (button) {
@@ -119,8 +116,7 @@ describe('Home', () => {
   })
 
 
-  it("check validation when clicking sending, and if successfully sent, then button 'Sending, please wait..' disappears ", async () => {
-    render(<Home />)
+  it("check validation when clicking button 'Send', and if successfully sent, then button 'Sending, please wait..' disappears ", async () => {
     const button = screen.queryByLabelText('invite button');
 
     if (button) {
@@ -163,7 +159,6 @@ describe('Home', () => {
 
   
   it("when sending a registered email, error message shows below button 'Send'", async () => {
-    render(<Home />)
     const button = screen.queryByLabelText('invite button');
 
     if (button) {
