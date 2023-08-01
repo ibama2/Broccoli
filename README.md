@@ -34,15 +34,18 @@ Nextjs: 13.4.12 (requires Node.js 16.8 or later.)
 ```bash
 npx create-next-app --example with-jest with-jest-app
 ```
-
-This includes Next.js' built-in support for Global CSS, CSS Modules and TypeScript.
-
+# Build Tool:
 The Next.js Compiler, written in Rust using SWC, allows Next.js to transform and minify your JavaScript code for production.
-
 Compilation using the Next.js Compiler is 17x faster than Babel and enabled by default since Next.js version 12.
 
-## JEST notes
-0. 测试前&测试后
+# Styling Approach
+Next.js' built-in support for Global CSS, CSS Modules.
+
+# Responsive Design
+mobile friendly
+
+# JEST notes
+1. 测试前&测试后
     ```
     beforeEach(() => {
         jest.mock('axios');
@@ -54,14 +57,14 @@ Compilation using the Next.js Compiler is 17x faster than Babel and enabled by d
     })
     ```
 
-1. act:
+2. act:
     The act function is a utility provided by the React Testing Library that wraps around your code, ensuring that all updates related to state changes, effects, and other asynchronous actions are flushed before proceeding. This is crucial when testing components with asynchronous behavior, as it helps maintain a consistent and predictable test environment.
 
     ```
     await act(async () => fireEvent.click(button));
     ```
 
-2.数据返回成功，更新state，触发页面重渲染的测试方法
+3. 数据返回成功，更新state，触发页面重渲染的测试方法
     ```
     const mockResponse = {
         status: 200
@@ -69,7 +72,7 @@ Compilation using the Next.js Compiler is 17x faster than Babel and enabled by d
       axios.post = jest.fn().mockResolvedValueOnce(mockResponse);
     ```
 
-3.数据返回失败，更新state，触发页面重渲染的测试方法
+4. 数据返回失败，更新state，触发页面重渲染的测试方法
     ```
     // mock bad request 400
     const mockRejectedResponse = {
