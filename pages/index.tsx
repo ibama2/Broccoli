@@ -2,11 +2,11 @@ import Head from 'next/head'
 import React, { useState } from 'react';
 import { Modal, Box, FormControl, InputLabel, Input, FormHelperText, Typography } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import axios from 'axios';
+import * as APIService from '../apiServices';
 
 import styles from '@/pages/index.module.css'
 
-const style = {
+const modalBoxStyle = {
   position: 'absolute' as 'absolute',
   top: '50%',
   left: '50%',
@@ -19,7 +19,6 @@ const style = {
 };
 
 const emailValidRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-const url = 'https://l94wc2001h.execute-api.ap-southeast-2.amazonaws.com/prod/fake-auth';
 
 export default function Home() {
   // modal props
@@ -77,7 +76,7 @@ export default function Home() {
   }
 
   // request
-  const handleSend = () => {
+  const handleSend = async () => {
     // validation
     if (fullName.length < 3) {
       setErrorFullName(true);
@@ -94,23 +93,18 @@ export default function Home() {
 
     // send the request
     setIsLoading(true);
-    axios.post(url, {
-      name: fullName,
-      email
-    })
-      .then(({ status }) => {
-        setIsLoading(false);
-        if (status == 200) {
-          setSuccess(true);
-        }
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        if (error?.response?.status == 400) {
-          setErrorStatusText(error?.response?.data?.errorMessage || 'request error');
-        }
-      });
-
+    try {
+      const response = await APIService.register(fullName, email);
+      if (response?.status == 200) {
+        setSuccess(true);
+      }
+    } catch (error: any) {
+      if (error?.response?.status == 400) {
+        setErrorStatusText(error?.response?.data?.errorMessage || 'request error');
+      }
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   const ModalContent = () => success ? (
@@ -160,7 +154,7 @@ export default function Home() {
 
       <button aria-label="send-button" disabled={isLoading} className={styles.button} onClick={handleSend}>{isLoading ? 'Sending, please wait..' : 'Send'}</button>
 
-      {errorStatusText.length > 0 ? <div aria-label='error-status-text'>{errorStatusText}</div> : null}
+      {errorStatusText.length > 0 ? <div className={styles.red} aria-label='error-status-text'>{errorStatusText}</div> : null}
     </div>
   )
 
@@ -201,7 +195,7 @@ export default function Home() {
         aria-label="invite-modal-title"
         aria-describedby="invite-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={modalBoxStyle}>
           {ModalContent()}
         </Box>
       </Modal>

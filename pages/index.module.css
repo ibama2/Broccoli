@@ -20,25 +20,29 @@
   font-size: 0.9rem;
 }
 
-.button {
-  font-size: 1.2rem;
-  padding: 1rem;
-  margin-top: 1.5rem;
-  cursor: pointer;
-}
-
-.button:disabled {
-  cursor: not-allowed;
-}
-
 .flexColumn {
   display: flex;
   flex-direction: column;
 }
 
 .flexColumn > * + * {
-  padding: 1rem;
+  padding: 0.8rem;
   text-align: center;
+}
+
+.flexColumn input {
+  padding-left: 0.5rem;
+}
+
+.button {
+  font-size: 1.2rem;
+  padding: 0.6rem;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+.button:disabled {
+  cursor: not-allowed;
 }
 
 .shortLine {
@@ -50,6 +54,10 @@
 
 .italic {
   font-style: italic;
+}
+
+.red {
+  color: orangered;
 }
 
 @media (max-width: 600px) {
