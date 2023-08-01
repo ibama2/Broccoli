@@ -17,7 +17,7 @@
 
 
 .description {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
 .flexColumn {
@@ -26,7 +26,7 @@
 }
 
 .flexColumn > * + * {
-  padding: 1rem;
+  padding: 0.8rem;
   text-align: center;
 }
 
@@ -35,8 +35,8 @@
 }
 
 .button {
-  font-size: 1rem;
-  padding: 0.8rem;
+  font-size: 1.2rem;
+  padding: 0.6rem;
   margin-top: 2rem;
   cursor: pointer;
 }
@@ -61,6 +61,10 @@
 }
 
 @media (max-width: 600px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
   .flexColumn > * + * {
     padding: 0.5rem;
   }
