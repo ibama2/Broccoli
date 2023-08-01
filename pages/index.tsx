@@ -77,17 +77,22 @@ export default function Home() {
 
   // request
   const handleSend = async () => {
+    let flag = false;
     // validation
     if (fullName.length < 3) {
       setErrorFullName(true);
-      return;
+      flag = true;
     }
     if (!email.match(emailValidRegex)) {
       setErrorEmail(true);
-      return;
+      flag = true;
     }
     if (email !== confirmEmail) {
       setErrorConfirmEmail(true);
+      flag = true;
+    }
+
+    if(flag) {
       return;
     }
 
@@ -161,12 +166,12 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>BROCOLI & Co.</title>
+        <title>BROCCOLI & CO.</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <header aria-label="header">
-        Broccoli & Co.
+        BROCCOLI & CO.
       </header>
 
       <main>

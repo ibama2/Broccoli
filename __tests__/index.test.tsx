@@ -15,11 +15,11 @@ describe('Home', () => {
     jest.clearAllMocks();
   })
 
-  it('renders a header: Broccoli & Co.', () => {
+  it('renders a header: BROCCOLI & CO.', () => {
     const header = screen.queryByLabelText('header')
     let heading = header?.textContent;
 
-    expect(heading).toBe('Broccoli & Co.');
+    expect(heading).toBe('BROCCOLI & CO.');
   })
 
   it('renders an invite button', () => {
