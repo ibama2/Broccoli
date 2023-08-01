@@ -51,6 +51,11 @@ footer {
   header {
     justify-content: center;
     padding-left: 0;
+    height: 60px;
+  }
+
+  footer {
+    height: 60px;
   }
 
   .MuiBox-root {
